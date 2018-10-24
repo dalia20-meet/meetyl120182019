@@ -1,0 +1,20 @@
+import turtle
+# for i in range(5):
+# 	turtle.forward(130)
+# 	turtle.right(145)
+
+turtle.penup()
+turtle.goto(200,200)
+turtle.pendown()
+turtle.begin_fill()
+turtle.forward(170)
+turtle.right(90)
+turtle.forward(125)
+turtle.right(45)
+turtle.forward(120)
+turtle.right(90)
+turtle.forward(120)
+turtle.right(45)
+turtle.forward(130)
+turtle.end_fill()
+turtle.mainloop()
