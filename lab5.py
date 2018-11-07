@@ -145,8 +145,8 @@ class Person():
 
 
 a = Person("Britney", "Pizza", 16,"twix","yellow")
-a.color()
-a.age()
+
+
 a.info()
 
 b = Person("Jake","Burger","nutella",15,"red")
