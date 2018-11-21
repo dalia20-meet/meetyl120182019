@@ -3,7 +3,7 @@ import turtle
 import random
 turtle.colormode(255)
 from turtle  import Turtle
-
+'''
 class Square(Turtle):
 	def __init__(self,size):
 		Turtle.__init__(self)
@@ -17,11 +17,20 @@ class Square(Turtle):
 		self.color(R,G,B)
 Square1 = Square(3)
 
-
 Square1.random_color()
-
-class Hexagon(Square):
-	pass
+'''
+class Hexagon():
+	
+	turtle.begin_poly()
+	turtle.fd(100)
+	turtle.left(20)
+ 	turtle.fd(30)
+ 	turtle.left(60)
+ 	turtle.fd(50)
+ 	turtle.end_poly(
+p = turtle.get_poly()
+turtle.register_shape("Hexagon", p)
+	
 
 
 turtle.mainloop()
