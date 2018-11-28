@@ -19,18 +19,27 @@ Square1 = Square(3)
 
 Square1.random_color()
 '''
-class Hexagon():
-	
-	turtle.begin_poly()
-	turtle.fd(100)
-	turtle.left(20)
- 	turtle.fd(30)
- 	turtle.left(60)
- 	turtle.fd(50)
- 	turtle.end_poly(
-p = turtle.get_poly()
-turtle.register_shape("Hexagon", p)
-	
+class Hexagon(Turtle):
+	def __init__ (self,x):
+		Turtle.__init__ (self)
+		turtle.register_shape("Hexagon",((0,0),(x,0),(2*x,x),(2*x,x*2),(x,3*x),(0,3*x),(-x,2*x),(-x,x),(0,0)))
+		self.shape("Hexagon")
+H = Hexagon(20)
+
+turtle.mainloop()
 
 
+	
+	
+
+'''
+class Hexagon(T):
+	def __init__(self,x):
+		Turtle.__init__ (self)
+		turtle.register_shape("Hexagon",((0,0),(x,0),(2*x,x),(2*x,x*2),(x,3*x),(-x,2*x),(-x,x),(0,0)))
+
+	
+	
+
+'''
 turtle.mainloop()
