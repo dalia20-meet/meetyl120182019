@@ -1,3 +1,4 @@
+'''
 import tkinter as tk
 from tkinter import simpledialog
 #Then when ever you want to ask the user for input use this code
@@ -151,3 +152,44 @@ a.info()
 
 b = Person("Jake","Burger","nutella",15,"red")
 b.info()
+
+class Bear(object):
+	def __init__(self, name):
+		self.name = name
+		print("A new bear created. Its name is: " + self.name)
+	def say_hi(self):
+		print("Hi! I’m a bear. My name is " + self.name)
+my_bear = Bear("Danny")
+my_bear.say_hi()
+
+ballons=5
+name = "Ron"
+color = "yellow"
+print("This is a tale about" + str(ballons)+"ballons. The first kid is"+name+"who got a"+color+"ballons")
+
+class Cat(object):
+	"""docstring for Cat"""
+	def __init__(self, name):
+		self.name = name
+	def birthday(self):
+		age=0
+		for age in range(8):
+			age+=1
+			if age >= 100:
+				print("Dong dong , the cat is dead!")
+			else:
+				print(self.name + "is hasing its" + str(age)+ "birthday!" )	
+
+my_cat = Cat("Salem")
+my_cat.birthday()
+# what I want: my cat to celebrate its 8th birthday (and all the 
+# birthdays that come before that)
+'''
+class Cake(object):
+	def __init__(self,flavor):
+		self.cake_flavor = flavor 
+	def eat(self):
+		print("Yummy!!! Eating a"+ self.cake_flavor + "cake :)")
+
+a=Cake("Chocolate")
+a.eat()
