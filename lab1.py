@@ -34,7 +34,7 @@ turtle.goto(-110, -25)
 turtle.pendown()
 turtle.circle(100)
 
-turtle.pensize(25)
+turtle.pensize(25)git
 turtle.color("black")
 turtle.penup()
 turtle.goto(135, -25)
