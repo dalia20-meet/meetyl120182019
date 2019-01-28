@@ -59,6 +59,9 @@ RUNNING=True
 SLEEP=0.0077
 SCREEN_WIDTH=int(getcanvas().winfo_width()/2)
 SCREEN_HEIGHT=int(getcanvas().winfo_height()/2)
+SCORE_SIZE = 15
+SCORE_TYPE = "bold"
+SCORE_COLOR = "red"
 
 
 MY_BALL=Ball(12,12,10,15,23,"blue")
@@ -73,6 +76,26 @@ MAXIMUM_BALL_DY=5
 
 BALLS=[]
 
+
+for i in range(NUMBER_OF_BALLS):
+	x= random.randint(int(-SCREEN_WIDTH+MAXIMUM_BALL_RADIUS), int(SCREEN_WIDTH-MAXIMUM_BALL_RADIUS))
+	y= random.randint(int(-SCREEN_HEIGHT+MAXIMUM_BALL_RADIUS), int(SCREEN_HEIGHT - MAXIMUM_BALL_RADIUS))
+	dx= random.randint(MINIMUM_BALL_DX,MAXIMUM_BALL_DX)
+	dy= random.randint(MINIMUM_BALL_DY , MAXIMUM_BALL_DY)
+	while x>-70 and x<70:
+		x=random.randint(int(-SCREEN_WIDTH+MAXIMUM_BALL_RADIUS), int(SCREEN_WIDTH-MAXIMUM_BALL_RADIUS))
+	while y>-70 and y<70:
+		y= random.randint(int(-SCREEN_HEIGHT+MAXIMUM_BALL_RADIUS), int(SCREEN_HEIGHT - MAXIMUM_BALL_RADIUS))
+	while dx==0:
+		dx= random.randint(MINIMUM_BALL_DX,MAXIMUM_BALL_DX)
+	while dy==0:
+		dy=random.randint(MINIMUM_BALL_DY , MAXIMUM_BALL_DY)
+	radius= random.randint(MINIMUM_BALL_RADIUS , MAXIMUM_BALL_RADIUS)
+	color=(random.random(), random.random(), random.random())
+	ball1=Ball(x,y,dx,dy,radius,color)
+	BALLS.append(ball1)
+
+'''
 for i in range(NUMBER_OF_BALLS):
 	x=random.randint(-SCREEN_WIDTH+MAXIMUM_BALL_RADIUS,SCREEN_WIDTH-MAXIMUM_BALL_RADIUS)
 	y=random.randint(-SCREEN_HEIGHT+MAXIMUM_BALL_RADIUS,SCREEN_HEIGHT-MAXIMUM_BALL_RADIUS)
@@ -88,11 +111,11 @@ for i in range(NUMBER_OF_BALLS):
 	color = (random.random(),random.random(),random.random())
 	new_ball= Ball(x,y,dx,dy,radius,color)
 	BALLS.append(new_ball)
-
+'''
 
 def move_all_balls():
-	for ball in BALLS :
-		ball.move(SCREEN_WIDTH,SCREEN_HEIGHT)
+	for b in BALLS :
+		b.move(SCREEN_WIDTH,SCREEN_HEIGHT)
 
 
 def collide(ball_a,ball_b):
@@ -103,7 +126,7 @@ def collide(ball_a,ball_b):
 		return True
 	else:	
 		return False
-
+		
 
 def check_all_balls_collision():
 	for ball_a in (BALLS):
@@ -169,6 +192,7 @@ def check_myball_collision():
 			if my_ball_r4 > ball_r4:
 				score = score + 2
 
+
 				ball.r = radius
 				ball.x = X_COORDINATE
 				ball.y = Y_COORDINATE
@@ -191,9 +215,14 @@ def check_myball_collision():
 				ball.r = ball.r + 2
 				ball.shapesize(ball.r/10)
 
+					
 				return True
 
+			if score == 10:
+				print("YOU WIN")
+				
 	return False		
+
 
 def movearound(event):
 	X = event.x - round(SCREEN_WIDTH)
@@ -210,10 +239,25 @@ while RUNNING == True:
 	if check_myball_collision() == True :
 		RUNNING = False
 	time.sleep(0.05)
+"""yl12018201
 def timerDisplay():
 	global timeScore
 	timeScore = int(time.clock() * 1.5)
 	timeWrite.goto(-SCREEN_WIDTH + 10 , SCREEN_HEIGHT - 30)
 	timeWrite.clear()
 	timeWrite.write("Time: " + str(timeScore), False , "left" , (TIME_FONT_NAME) , )
+"""
+global timescore
+timescore = 0
+timewrite = turtle.Turtle()
+timewrite.ht()
+def timer():
+	global timescore
+	timescore = int(time.clock()*2.5)
+	timewrite.goto(200,350)
+	timewrite.clear()
+	timewrite.write(" Time : " + str(timescore),False , "left" , font=("Arial",16,"bold"))
+
+
+
 turtle.mainloop()
