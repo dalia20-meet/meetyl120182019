@@ -208,7 +208,7 @@ def check_myball_collision():
 
 			else:
 				turtle.goto(0,0)
-				turtle.write("YOU LOST!!", move=False , align="right" , font=("Arial", 16 , "bold"))
+				turtle.write("YOU LOST!!", move=False , align="center" , font=("Arial", 16 , "bold"))
 				hide_all_balls()
 				return False
 
@@ -253,7 +253,7 @@ while RUNNING == True:
 		RUNNING = False
 	if score >=10:
 		turtle.goto(0,0)
-		turtle.write("YOU WON!!",move=False , align="right" , font=("Arial", 20 , "bold"))
+		turtle.write("YOU WON!!",move=False , align="center" , font=("Arial", 20 , "bold"))
 		hide_all_balls()
 		pygame.mixer.music.play()
 
@@ -263,7 +263,7 @@ while RUNNING == True:
 
 	timer()
 	turtle.update()
-	time.sleep(0.05)
+	time.sleep(0.01)
 '''
 
 def timerDisplay():
