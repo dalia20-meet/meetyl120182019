@@ -1,4 +1,4 @@
-'''
+
 import tkinter as tk
 from tkinter import simpledialog
 #Then when ever you want to ask the user for input use this code

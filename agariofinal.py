@@ -3,6 +3,8 @@ from turtle import *
 import time
 import random
 import pygame
+import tkinter as tk
+from tkinter import simpledialog
 import math
 global timeScore
 global score 
@@ -59,17 +61,25 @@ RUNNING=True
 SLEEP=0.0077
 SCREEN_WIDTH=int(getcanvas().winfo_width()/2)
 SCREEN_HEIGHT=int(getcanvas().winfo_height()/2)
+
+
+greeting = simpledialog.askstring("Input", "Welcome, are you ready to play?", parent=tk.Tk().withdraw())
+if greeting=="yes":
+	print("woooooooow!")
+if greeting =="no":
+	quit()	
+
 SCORE_SIZE = 15
 SCORE_TYPE = "bold"
 SCORE_COLOR = "red"
 
 turtle.pu()
 turtle.goto(0,SCREEN_HEIGHT-50)
-turtle.write("WHATEVER", move=False , align="right" , font=("Arial", 16 , "bold"))
+turtle.write("DARLIO", move=False , align="center" , font=("Arial", 16 , "bold"))
 turtle.goto(SCREEN_WIDTH -50, SCREEN_HEIGHT-50)
 turtle.write("Score:"+str(score), move=False , align="right" , font=("Arial", 16 , "bold"))
 
-turtle.bgpic('smoke.1.gif')
+turtle.bgpic('grey1.gif')
 
 
 pygame.init()
@@ -222,21 +232,16 @@ def movearound(event):
 
 turtle.getcanvas().bind("<Motion>" , movearound)
 turtle.listen()
-'''
-def check():
 
-	check_all_balls_collision()
-	check_myball_collision()
 
-	if MY_BALL.xcor() == new_ball.xcor() or MY_BALL.ycor()==newballs.ycor():
-		x = randon.randint(-SCREEN_WIDTH + MAXIMUM_BALL_RADIUS ,  SCREEN_WIDTH - MINIMUM_BALL_RADIUS)
-		Y = random.randint(-SCREEN_HEIGHT + MAXIMUM_BALL_RADIUS , SCREEN_HEIGHT - MAXIMUM_BALL_RADIUS)
-'''
+
 global timescore
 timescore = 0
 timewrite = turtle.Turtle()
 timewrite.ht()
 start = time.time()
+
+
 def timer():
 	global timescore
 	timescore = int(time.time()-start)
@@ -251,28 +256,20 @@ while RUNNING == True:
 	check_all_balls_collision()
 	if check_myball_collision() == False :
 		RUNNING = False
-	if score >=10:
+	if score >=50:
 		turtle.goto(0,0)
 		turtle.write("YOU WON!!",move=False , align="center" , font=("Arial", 20 , "bold"))
 		hide_all_balls()
 		pygame.mixer.music.play()
 
 		RUNNING=False
+
+
 	SCREEN_WIDTH=int(getcanvas().winfo_width()/2)
 	SCREEN_HEIGHT=int(getcanvas().winfo_height()/2)
 
 	timer()
 	turtle.update()
 	time.sleep(0.01)
-'''
-
-def timerDisplay():
-	global timeScore
-	timeScore = int(time.clock() * 1.5)
-	timeWrite.goto(-SCREEN_WIDTH + 10 , SCREEN_HEIGHT - 30)
-	timeWrite.clear()
-	timeWrite.write("Time: " + str(timeScore), False , "left" , (TIME_FONT_NAME) , )
-	'''
-
-
-turtle.mainloop()
+time.sleep(3)
+pygame.mixer.stop()
